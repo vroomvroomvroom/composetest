@@ -1,0 +1,40 @@
+version: '2'
+services:
+  lb:
+    build: ./lb
+    ports: 
+     - "80:80"
+    links: 
+        - pyapp1:pyapp1
+        - pyapp2:pyapp2
+        - pyapp3:pyapp3
+
+  pyapp1:
+    build: ./pyapp
+    links:
+        - redis
+    ports:
+     - "5000"
+    volumes:
+     - ./pyapp/:/code
+  pyapp2:
+    build: ./pyapp
+    links:
+        - redis
+    ports:
+     - "5000"
+    volumes:
+     - ./pyapp/:/code
+  pyapp3:
+    build: ./pyapp
+    links:
+        - redis
+    ports:
+     - "5000:5000"
+    volumes:
+     - ./pyapp/:/code
+
+  redis:
+    image: "redis:alpine"
+
+
