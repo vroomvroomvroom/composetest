@@ -6,8 +6,11 @@ quick start:
 be sure you have docker and docker-compose installed
 
 git clone https://github.com/vroomvroomvroom/composetest.git
+
 cd composetest/
+
 sudo /usr/local/bin/docker-compose build
+
 sudo /usr/local/bin/docker-compose up -d
 
 curl http://0.0.0.0:80/
